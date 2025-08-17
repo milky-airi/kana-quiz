@@ -1,0 +1,61 @@
+{
+  "type": "hira2rome",
+  "level": "SEION",
+  "questions": [
+    { "prompt": "あ", "answer": "a" },
+    { "prompt": "い", "answer": "i" },
+    { "prompt": "う", "answer": "u" },
+    { "prompt": "え", "answer": "e" },
+    { "prompt": "お", "answer": "o" },
+
+    { "prompt": "か", "answer": "ka" },
+    { "prompt": "き", "answer": "ki" },
+    { "prompt": "く", "answer": "ku" },
+    { "prompt": "け", "answer": "ke" },
+    { "prompt": "こ", "answer": "ko" },
+
+    { "prompt": "さ", "answer": "sa" },
+    { "prompt": "し", "answer": "shi" },
+    { "prompt": "す", "answer": "su" },
+    { "prompt": "せ", "answer": "se" },
+    { "prompt": "そ", "answer": "so" },
+
+    { "prompt": "た", "answer": "ta" },
+    { "prompt": "ち", "answer": "chi" },
+    { "prompt": "つ", "answer": "tsu" },
+    { "prompt": "て", "answer": "te" },
+    { "prompt": "と", "answer": "to" },
+
+    { "prompt": "な", "answer": "na" },
+    { "prompt": "に", "answer": "ni" },
+    { "prompt": "ぬ", "answer": "nu" },
+    { "prompt": "ね", "answer": "ne" },
+    { "prompt": "の", "answer": "no" },
+
+    { "prompt": "は", "answer": "ha" },
+    { "prompt": "ひ", "answer": "hi" },
+    { "prompt": "ふ", "answer": "fu" },
+    { "prompt": "へ", "answer": "he" },
+    { "prompt": "ほ", "answer": "ho" },
+
+    { "prompt": "ま", "answer": "ma" },
+    { "prompt": "み", "answer": "mi" },
+    { "prompt": "む", "answer": "mu" },
+    { "prompt": "め", "answer": "me" },
+    { "prompt": "も", "answer": "mo" },
+
+    { "prompt": "や", "answer": "ya" },
+    { "prompt": "ゆ", "answer": "yu" },
+    { "prompt": "よ", "answer": "yo" },
+
+    { "prompt": "ら", "answer": "ra" },
+    { "prompt": "り", "answer": "ri" },
+    { "prompt": "る", "answer": "ru" },
+    { "prompt": "れ", "answer": "re" },
+    { "prompt": "ろ", "answer": "ro" },
+
+    { "prompt": "わ", "answer": "wa" },
+    { "prompt": "を", "answer": "wo" },
+    { "prompt": "ん", "answer": "n" }
+  ]
+}

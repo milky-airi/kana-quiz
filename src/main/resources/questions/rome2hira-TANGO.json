@@ -1,0 +1,65 @@
+{
+  "type": "rome2hira",
+  "level": "TANGO",
+  "questions": [
+    { "prompt": "sakura", "choices": ["さくら","さくり","さくらあ","さから"], "answer": "さくら", "meaning": "桜 / cherry blossom" },
+    { "prompt": "tsuki", "choices": ["つき","つく","つぎ","づき"], "answer": "つき", "meaning": "月 / moon" },
+    { "prompt": "asa", "choices": ["あさ","あしゃ","あさあ","あさし"], "answer": "あさ", "meaning": "朝 / morning" },
+    { "prompt": "hiru", "choices": ["ひる","ひるう","ひろ","ひら"], "answer": "ひる", "meaning": "昼 / noon" },
+    { "prompt": "yoru", "choices": ["よる","よろ","よるう","より"], "answer": "よる", "meaning": "夜 / night" },
+
+    { "prompt": "yasai", "choices": ["やさい","やさあい","やさいい","やさいん"], "answer": "やさい", "meaning": "野菜 / vegetable" },
+    { "prompt": "kudamono", "choices": ["くだもの","くだものう","くたもの","くだもね"], "answer": "くだもの", "meaning": "果物 / fruit" },
+    { "prompt": "suika", "choices": ["すいか","すいが","すいこ","すいかあ"], "answer": "すいか", "meaning": "スイカ / watermelon" },
+    { "prompt": "ringo", "choices": ["りんご","りんこ","りごん","りんごう"], "answer": "りんご", "meaning": "りんご / apple" },
+    { "prompt": "mikan", "choices": ["みかん","みかんん","みかむ","みがん"], "answer": "みかん", "meaning": "みかん / mandarin orange" },
+
+    { "prompt": "ocha", "choices": ["おちゃ","おや","おちや","おちゃあ"], "answer": "おちゃ", "meaning": "お茶 / tea" },
+    { "prompt": "gyuuniku", "choices": ["ぎゅうにく","ぎゅにく","ぎゆうにく","ぎゅうにくう"], "answer": "ぎゅうにく", "meaning": "牛肉 / beef" },
+    { "prompt": "shouyu", "choices": ["しょうゆ","しようゆ","しょうゆう","しょゆう"], "answer": "しょうゆ", "meaning": "醤油 / soy sauce" },
+    { "prompt": "kyuuri", "choices": ["きゅうり","きゅり","きゆうり","きゅうりい"], "answer": "きゅうり", "meaning": "きゅうり / cucumber" },
+    { "prompt": "chizu", "choices": ["ちず","ちつ","ぢず","ちずう"], "answer": "ちず", "meaning": "地図 / map" },
+
+    { "prompt": "jisho", "choices": ["じしょ","じしよう","ぢしょ","じしよ"], "answer": "じしょ", "meaning": "辞書 / dictionary" },
+    { "prompt": "bijutsu", "choices": ["びじゅつ","びじつ","びじゅつう","びじゅちゅ"], "answer": "びじゅつ", "meaning": "美術 / art" },
+    { "prompt": "denki", "choices": ["でんき","でんぎ","でんきい","でにき"], "answer": "でんき", "meaning": "電気 / electricity" },
+    { "prompt": "gaikoku", "choices": ["がいこく","がこく","がいこくう","がいごく"], "answer": "がいこく", "meaning": "外国 / foreign country" },
+    { "prompt": "gaikou", "choices": ["がいこう","がいこ","がこう","がいこお"], "answer": "がいこう", "meaning": "外交 / diplomacy" },
+
+    { "prompt": "yuubinkyoku", "choices": ["ゆうびんきょく","ゆびんきょく","ゆうびんきよく","ゆうびんきょくう"], "answer": "ゆうびんきょく", "meaning": "郵便局 / post office" },
+    { "prompt": "chuugaku", "choices": ["ちゅうがく","ちゅがく","ちゆうがく","ちゅうがくう"], "answer": "ちゅうがく", "meaning": "中学 / junior high school" },
+    { "prompt": "nyuugaku", "choices": ["にゅうがく","にゆうがく","にゅがく","にゅうがくう"], "answer": "にゅうがく", "meaning": "入学 / school enrollment" },
+    { "prompt": "shukudai", "choices": ["しゅくだい","しゅくだいん","しゆくだい","しゅくたい"], "answer": "しゅくだい", "meaning": "宿題 / homework" },
+    { "prompt": "kissaten", "choices": ["きっさてん","きさてん","きっさでん","きっさてんん"], "answer": "きっさてん", "meaning": "喫茶店 / coffee shop" },
+
+    { "prompt": "takkyuubin", "choices": ["たっきゅうびん","たきゅうびん","たっきゅびん","たっきゅうびんん"], "answer": "たっきゅうびん", "meaning": "宅急便 / courier service" },
+    { "prompt": "ryokou", "choices": ["りょこう","りよこう","りょこ","りょうこう"], "answer": "りょこう", "meaning": "旅行 / travel" },
+    { "prompt": "kyouto", "choices": ["きょうと","きょと","きようと","きょうとう"], "answer": "きょうと", "meaning": "京都 / Kyoto" },
+    { "prompt": "otousan", "choices": ["おとうさん","おとさん","おとおさん","おとうさんん"], "answer": "おとうさん", "meaning": "お父さん / father" },
+    { "prompt": "oniisan", "choices": ["おにいさん","おにさん","おにいさ","おにいさんん"], "answer": "おにいさん", "meaning": "お兄さん / older brother" },
+
+    { "prompt": "obaasan", "choices": ["おばあさん","おばさん","おばあさ","おばあさんん"], "answer": "おばあさん", "meaning": "おばあさん / grandmother" },
+    { "prompt": "ojiisan", "choices": ["おじいさん","おじさん","おじいさ","おじいさんん"], "answer": "おじいさん", "meaning": "おじいさん / grandfather" },
+    { "prompt": "youchien", "choices": ["ようちえん","よちえん","ようちえ","ようちえんん"], "answer": "ようちえん", "meaning": "幼稚園 / kindergarten" },
+    { "prompt": "shougakkou", "choices": ["しょうがっこう","しょうがこう","しようがっこう","しょうがっこ"], "answer": "しょうがっこう", "meaning": "小学校 / elementary school" },
+    { "prompt": "chuugakkou", "choices": ["ちゅうがっこう","ちゅがっこう","ちゆうがっこう","ちゅうがこう"], "answer": "ちゅうがっこう", "meaning": "中学校 / junior high school" },
+
+    { "prompt": "koukou", "choices": ["こうこう","ここう","こうこ","こうこうう"], "answer": "こうこう", "meaning": "高校 / high school" },
+    { "prompt": "daigaku", "choices": ["だいがく","だいかく","だいがくう","だいがくん"], "answer": "だいがく", "meaning": "大学 / university" },
+    { "prompt": "sensei", "choices": ["せんせい","せんせ","せいせい","せんぜい"], "answer": "せんせい", "meaning": "先生 / teacher" },
+    { "prompt": "gakusei", "choices": ["がくせい","がくせ","がくせえ","がぐせい"], "answer": "がくせい", "meaning": "学生 / student" },
+    { "prompt": "shingou", "choices": ["しんごう","しんご","しんごお","しんごうう"], "answer": "しんごう", "meaning": "信号 / traffic light" },
+
+    { "prompt": "bangou", "choices": ["ばんごう","ばんご","ばんごお","ばんこう"], "answer": "ばんごう", "meaning": "番号 / number" },
+    { "prompt": "reizouko", "choices": ["れいぞうこ","れぞうこ","れいぞこ","れいぞうこう"], "answer": "れいぞうこ", "meaning": "冷蔵庫 / refrigerator" },
+    { "prompt": "ressha", "choices": ["れっしゃ","れしゃ","れつしゃ","れっしや"], "answer": "れっしゃ", "meaning": "列車 / train" },
+    { "prompt": "happyou", "choices": ["はっぴょう","はぴょう","はっぴょ","はっぴょうう"], "answer": "はっぴょう", "meaning": "発表 / presentation" },
+    { "prompt": "kyuukou", "choices": ["きゅうこう","きゅこう","きゆうこう","きゅうこ"], "answer": "きゅうこう", "meaning": "急行 / express train" },
+
+    { "prompt": "jugyou", "choices": ["じゅぎょう","じゅぎよう","じゆぎょう","じゅぎょ"], "answer": "じゅぎょう", "meaning": "授業 / class" },
+    { "prompt": "byouki", "choices": ["びょうき","びようき","びょき","びょうきい"], "answer": "びょうき", "meaning": "病気 / illness" },
+    { "prompt": "ginkou", "choices": ["ぎんこう","ぎんこ","ぎにこう","ぎんこうう"], "answer": "ぎんこう", "meaning": "銀行 / bank" },
+    { "prompt": "yuugata", "choices": ["ゆうがた","ゆがた","ゆうかた","ゆうがたあ"], "answer": "ゆうがた", "meaning": "夕方 / evening" },
+    { "prompt": "asagohan", "choices": ["あさごはん","あさごぱん","あさごは","あさごはんん"], "answer": "あさごはん", "meaning": "朝ごはん / breakfast" }
+  ]
+}

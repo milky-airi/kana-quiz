@@ -1,0 +1,57 @@
+# --- OS / IDE ---
+.DS_Store
+.idea/
+*.iml
+
+# --- Build / Logs ---
+target/
+*.log
+
+# --- Local settings (必要なら) ---
+application-local.properties
+application-*.yml
+
+# --- Audio build artifacts (生成物) ---
+#　audio/**/*.wav
+#　audio/**/*.aiff
+# もし静的配布用の m4a を確定でリポジトリに入れるなら、下行はコメントアウト
+# audio/**/*.m4a
+
+# --- Node系（今は未使用なら不要） ---
+node_modules/
+
+# --- Others ---
+*.tmp
+HELP.md
+target/
+.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/

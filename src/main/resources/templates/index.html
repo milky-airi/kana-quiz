@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Kana Quiz</title>
+    <link rel="stylesheet" href="/app.css"><!-- 共通テーマ -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"><!-- アイコン -->
+    <link rel="icon" type="image/png" href="/kanaquiz_logo.png">
+    <style>
+        .home { min-height: 80vh; display:flex; flex-direction:column; align-items:center; text-align:center; gap:28px; }
+        .title { font-size: 40px; font-weight: 800; letter-spacing: .5px; }
+        .menu { display:grid; grid-template-columns:1fr; gap:14px; }
+        @media (min-width:520px){ .menu{ grid-template-columns:1fr 1fr 1fr; } }
+
+        /* ホームのメニューボタン */
+        .menubtn{
+          display:inline-flex; align-items:center; justify-content:center; gap:10px;
+          padding:16px 18px; min-width:200px;
+          border-radius:12px; border:1px solid var(--border); text-decoration:none;
+          background:#ffca92; color:var(--fg); font-size:40px; font-weight:700;
+          transition: transform .06s ease, filter .12s ease;
+        }
+        .menubtn:hover{ filter:brightness(0.95); }
+        .menubtn:active{ transform: translateY(1px); }
+        .menubtn i{ font-size:40px;}
+    </style>
+</head>
+
+<body>
+<div class="home wrap">
+    <div class="title">かなQuiz</div>
+
+    <div class="menu">
+        <!-- ローマ字 → ひらがな -->
+        <a class="menubtn" href="/levels?type=rome2hira" aria-label="rome to hira">
+            <span>A → あ</span>
+        </a>
+
+        <!-- ひらがな → ローマ字 -->
+        <a class="menubtn" href="/levels?type=hira2rome" aria-label="hira to rome">
+            <span>あ → A</span>
+        </a>
+
+        <!-- 音声 → ひらがな -->
+        <a class="menubtn" href="/levels?type=audio2hira" aria-label="audio to hira">
+            <span><i class="fa-solid fa-volume-high"></i> → あ</span>
+        </a>
+    </div>
+</div>
+</body>
+</html>

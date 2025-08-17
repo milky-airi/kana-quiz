@@ -1,0 +1,65 @@
+{
+  "type": "hira2rome",
+  "level": "TANGO",
+  "questions": [
+    { "prompt": "きょうかしょ", "choices": ["kyoukasho","kyoukashi","kyokasho","kyoukashu"], "answer": "kyoukasho", "meaning": "教科書 / textbook" },
+    { "prompt": "かいしゃいん", "choices": ["kaishain","kaishaen","kaishanen","kaisyain"], "answer": "kaishain", "meaning": "会社員 / company employee" },
+    { "prompt": "ひゃく", "choices": ["hyaku","hyako","hyaka","hiyaku"], "answer": "hyaku", "meaning": "百 / hundred" },
+    { "prompt": "おかあさん", "choices": ["okaasan","okasan","okaasann","okaasaan"], "answer": "okaasan", "meaning": "お母さん / mother" },
+    { "prompt": "いぬ", "choices": ["inu","ino","ena","inoo"], "answer": "inu", "meaning": "犬 / dog" },
+
+    { "prompt": "じゅう", "choices": ["juu","jyu","jui","jyuu"], "answer": "juu", "meaning": "十 / ten" },
+    { "prompt": "がっこう", "choices": ["gakkou","gakou","gakkoo","gakkoh"], "answer": "gakkou", "meaning": "学校 / school" },
+    { "prompt": "きっぷ", "choices": ["kippu","kipu","kippuu","kipp"], "answer": "kippu", "meaning": "切符 / ticket" },
+    { "prompt": "ざっし", "choices": ["zasshi","zashi","zasushi","zassi"], "answer": "zasshi", "meaning": "雑誌 / magazine" },
+    { "prompt": "しょくどう", "choices": ["shokudou","shokudo","syokudou","shokudoo"], "answer": "shokudou", "meaning": "食堂 / cafeteria" },
+
+    { "prompt": "ぎゅうにゅう", "choices": ["gyuunyuu","gyunyu","gyuunyu","gyunyuu"], "answer": "gyuunyuu", "meaning": "牛乳 / milk" },
+    { "prompt": "ちょっと", "choices": ["chotto","tyotto","chyotto","chotou"], "answer": "chotto", "meaning": "ちょっと / a little" },
+    { "prompt": "しんぶん", "choices": ["shinbun","shinboon","shinbunn","shinbunh"], "answer": "shinbun", "meaning": "新聞 / newspaper" },
+    { "prompt": "すうじ", "choices": ["suuji","suji","suugi","suujiu"], "answer": "suuji", "meaning": "数字 / number" },
+    { "prompt": "びょういん", "choices": ["byouin","byoin","byooin","byouinn"], "answer": "byouin", "meaning": "病院 / hospital" },
+
+    { "prompt": "でんしゃ", "choices": ["densha","densya","densyaa","densa"], "answer": "densha", "meaning": "電車 / train" },
+    { "prompt": "りょうり", "choices": ["ryouri","ryori","ryoori","ryourii"], "answer": "ryouri", "meaning": "料理 / cooking" },
+    { "prompt": "きょうだい", "choices": ["kyoudai","kyodai","kyooda","kyoudi"], "answer": "kyoudai", "meaning": "兄弟 / siblings" },
+    { "prompt": "きゅうじつ", "choices": ["kyuujitsu","kyuujitu","kyujitsu","kyoujitsu"], "answer": "kyuujitsu", "meaning": "休日 / holiday" },
+    { "prompt": "えんぴつ", "choices": ["enpitsu","enpitu","enpitsuu","empitsu"], "answer": "enpitsu", "meaning": "鉛筆 / pencil" },
+
+    { "prompt": "じてんしゃ", "choices": ["jitensha","jytensha","jitenhsha","jitensya"], "answer": "jitensha", "meaning": "自転車 / bicycle" },
+    { "prompt": "こうえん", "choices": ["kouen","koen","kouenn","koueen"], "answer": "kouen", "meaning": "公園 / park" },
+    { "prompt": "たんじょうび", "choices": ["tanjoubi","tanjobi","tanjyobi","tanjoupi"], "answer": "tanjoubi", "meaning": "誕生日 / birthday" },
+    { "prompt": "きょうしつ", "choices": ["kyoushitsu","kyoshitsu","kyousitu","kyouhshitsu"], "answer": "kyoushitsu", "meaning": "教室 / classroom" },
+    { "prompt": "でんき", "choices": ["denki","denkki","denkiy","denni"], "answer": "denki", "meaning": "電気 / electricity" },
+
+    { "prompt": "うどん", "choices": ["udon","udou","udonn","udouN"], "answer": "udon", "meaning": "うどん / udon noodles" },
+    { "prompt": "てんぷら", "choices": ["tenpura","tempura","tenpulla","tenpurra"], "answer": "tenpura", "meaning": "天ぷら / tempura" },
+    { "prompt": "せんせい", "choices": ["sensei","sensee","senei","sennsei"], "answer": "sensei", "meaning": "先生 / teacher" },
+    { "prompt": "くうこう", "choices": ["kuukou","kukou","kuukoo","kuuko"], "answer": "kuukou", "meaning": "空港 / airport" },
+    { "prompt": "りゅうがくせい", "choices": ["ryuugakusei","ryugakusei","ryuugakusai","ryuugakuse"], "answer": "ryuugakusei", "meaning": "留学生 / international student" },
+
+    { "prompt": "しょうがつ", "choices": ["shougatsu","shogatsu","syougatsu","shougatu"], "answer": "shougatsu", "meaning": "正月 / New Year" },
+    { "prompt": "きょうかい", "choices": ["kyoukai","kyokai","kyoukaii","kyouka"], "answer": "kyoukai", "meaning": "教会 / church" },
+    { "prompt": "じどうしゃ", "choices": ["jidousha","jidousya","jidosha","jidoucha"], "answer": "jidousha", "meaning": "自動車 / automobile" },
+    { "prompt": "でんわ", "choices": ["denwa","denha","dene","dennwa"], "answer": "denwa", "meaning": "電話 / telephone" },
+    { "prompt": "びじゅつかん", "choices": ["bijutsukan","bijutukan","bijyutsukan","bijutsukann"], "answer": "bijutsukan", "meaning": "美術館 / art museum" },
+
+    { "prompt": "ゆうびんきょく", "choices": ["yuubinkyoku","yubinkyoku","yuubinkyouku","yuubinkyokuu"], "answer": "yuubinkyoku", "meaning": "郵便局 / post office" },
+    { "prompt": "けっこん", "choices": ["kekkon","kekkou","kekon","kekkoon"], "answer": "kekkon", "meaning": "結婚 / marriage" },
+    { "prompt": "さっか", "choices": ["sakka","saka","sakkaa","satsuka"], "answer": "sakka", "meaning": "作家 / writer" },
+    { "prompt": "はっぴょう", "choices": ["happyou","happyo","happyouu","happyoo"], "answer": "happyou", "meaning": "発表 / presentation" },
+    { "prompt": "りょこう", "choices": ["ryokou","ryoukou","ryoko","ryokouu"], "answer": "ryokou", "meaning": "旅行 / travel" },
+
+    { "prompt": "しゅくだい", "choices": ["shukudai","syukudai","shukuda","shukudaii"], "answer": "shukudai", "meaning": "宿題 / homework" },
+    { "prompt": "じゅぎょう", "choices": ["jugyou","jyugyou","jigyoo","jugyuo"], "answer": "jugyou", "meaning": "授業 / class" },
+    { "prompt": "ちゅうしゃじょう", "choices": ["chuushajou","cyuushajou","chuushajyo","chuusajou"], "answer": "chuushajou", "meaning": "駐車場 / parking lot" },
+    { "prompt": "ほうそう", "choices": ["housou","hosou","houso","houssou"], "answer": "housou", "meaning": "放送 / broadcast" },
+    { "prompt": "じしん", "choices": ["jishin","zishin","jisin","jishinn"], "answer": "jishin", "meaning": "地震 / earthquake" },
+
+    { "prompt": "ゆうえんち", "choices": ["yuuenchi","yuenchi","yuuenchiu","yuuenchi-"], "answer": "yuuenchi", "meaning": "遊園地 / amusement park" },
+    { "prompt": "しょうがっこう", "choices": ["shougakkou","shogakkou","shougakou","syougakkou"], "answer": "shougakkou", "meaning": "小学校 / elementary school" },
+    { "prompt": "ちょうなん", "choices": ["chounan","cyounan","chonan","chouunan"], "answer": "chounan", "meaning": "長男 / eldest son" },
+    { "prompt": "きっさてん", "choices": ["kissaten","kisaten","kixsaten","kissatenn"], "answer": "kissaten", "meaning": "喫茶店 / coffee shop" },
+    { "prompt": "かぞく", "choices": ["kazoku","kazokuu","kazoko","kazuku"], "answer": "kazoku", "meaning": "家族 / family" }
+  ]
+}

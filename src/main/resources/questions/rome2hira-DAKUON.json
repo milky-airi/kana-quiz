@@ -1,0 +1,31 @@
+{
+  "type": "rome2hira",
+  "level": "DAKUON",
+  "questions": [
+    { "prompt": "ga", "answer": "が" },
+    { "prompt": "gi", "answer": "ぎ" },
+    { "prompt": "gu", "answer": "ぐ" },
+    { "prompt": "ge", "answer": "げ" },
+    { "prompt": "go", "answer": "ご" },
+    { "prompt": "za", "answer": "ざ" },
+    { "prompt": "ji", "answer": "じ" },
+    { "prompt": "zu", "answer": "ず" },
+    { "prompt": "ze", "answer": "ぜ" },
+    { "prompt": "zo", "answer": "ぞ" },
+    { "prompt": "da", "answer": "だ" },
+    { "prompt": "ji", "answer": "ぢ" },
+    { "prompt": "zu", "answer": "づ" },
+    { "prompt": "de", "answer": "で" },
+    { "prompt": "do", "answer": "ど" },
+    { "prompt": "ba", "answer": "ば" },
+    { "prompt": "bi", "answer": "び" },
+    { "prompt": "bu", "answer": "ぶ" },
+    { "prompt": "be", "answer": "べ" },
+    { "prompt": "bo", "answer": "ぼ" },
+    { "prompt": "pa", "answer": "ぱ" },
+    { "prompt": "pi", "answer": "ぴ" },
+    { "prompt": "pu", "answer": "ぷ" },
+    { "prompt": "pe", "answer": "ぺ" },
+    { "prompt": "po", "answer": "ぽ" }
+  ]
+}

@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Result - かなQuiz</title>
+    <link rel="stylesheet" href="/app.css"><!-- 共通テーマ -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="icon" type="image/png" href="/kanaquiz_logo.png">
+    <style>
+        :root { --accent:#ff7a00; }
+        .wrap{max-width:540px;margin:0 auto;text-align:center}
+        .score{ margin:18px 0 8px; font-size:64px; font-weight:700; letter-spacing:1px; }
+        .stars{font-size:28px; margin:8px 0 16px}
+        .btns{display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:8px}
+        .btn.primary{background:var(--accent); color:#fff; border-color:var(--accent)}
+        .reveal{opacity:0; transform:translateY(6px); animation:reveal .5s forwards .4s}
+        @keyframes reveal{to{opacity:1; transform:none}}
+
+        /* ▼ 紙吹雪用キャンバス */
+        #confetti {
+          position: fixed;
+          inset: 0;
+          width: 100vw;
+          height: 100vh;
+          pointer-events: none;
+          z-index: 999; /* 画面の最前面に */
+        }
+    </style>
+</head>
+<body>
+<!-- 紙吹雪キャンバス -->
+<canvas id="confetti" aria-hidden="true"></canvas>
+
+<div class="wrap">
+    <h1>🎉 Done!!</h1>
+    <div id="score" class="score">0 / 10</div>
+    <div id="stars" class="stars">⭐️⭐️⭐️</div>
+
+    <div class="btns reveal">
+        <a id="replay" class="btn">🔄 Try Again</a>
+        <a class="btn" href="/"><i class="fa-solid fa-house"></i></a>
+        <a id="next" class="btn primary" style="display:none"><i class="fa-solid fa-forward"></i> Try Next Level</a>
+    </div>
+</div>
+
+<script>
+    // ---------- 結果の表示 ----------
+    const p = new URLSearchParams(location.search);
+    const score = Number(p.get('score')||0);
+    const total = Number(p.get('total')||10);
+    const type  = p.get('type')  || 'rome2hira';
+    const level = p.get('level') || 'SEION';
+
+    const el = document.getElementById('score');
+    let cur = 0;
+    const step = Math.max(1, Math.ceil(total/20));
+    const timer = setInterval(()=>{
+      cur = Math.min(score, cur + step);
+      el.textContent = `${cur} / ${total}`;
+      if(cur >= score){ clearInterval(timer); }
+    }, 30);
+
+    const rate = score / total;
+    document.getElementById('stars').textContent = rate >= 0.9 ? '⭐️⭐️⭐️' : rate >= 0.6 ? '⭐️⭐️' : '⭐️';
+
+    document.getElementById('replay').href = `/quiz?type=${encodeURIComponent(type)}&level=${encodeURIComponent(level)}`;
+    const ORDER = ['SEION','DAKUON','YOUON','TANGO'];
+    const idx = ORDER.indexOf(level);
+    const next = document.getElementById('next');
+    if (idx >= 0 && idx < ORDER.length - 1) {
+      next.style.display = 'inline-block';
+      next.href = `/quiz?type=${encodeURIComponent(type)}&level=${encodeURIComponent(ORDER[idx+1])}`;
+    }
+
+    // ---------- 紙吹雪 ----------
+    (() => {
+      // アニメ控えめモードの人には流さない
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (prefersReduced) return;
+
+      const canvas = document.getElementById('confetti');
+      const ctx = canvas.getContext('2d');
+      let w, h, rafId, startT;
+
+      function resize() {
+        w = canvas.width  = window.innerWidth;
+        h = canvas.height = window.innerHeight;
+      }
+      window.addEventListener('resize', resize, { passive:true });
+      resize();
+
+      // 色はテーマ寄せ（オレンジ系 + 補色）
+      const COLORS = ['#ff7a00', '#ffc266', '#ffd699', '#7d4700', '#ff9250', '#ffb380'];
+      const COUNT = Math.min(180, Math.floor((w*h)/12000)); // 画面サイズに応じて調整
+      const DURATION = 3000;   // ms：表示時間
+      const FADE_OUT = 600;    // ms：フェード時間
+
+      const parts = Array.from({length: COUNT}).map(() => {
+        const angle = Math.random()*Math.PI*2;
+        const speed = 2 + Math.random()*3;
+        return {
+          x: Math.random()*w,
+          y: -20 - Math.random()*h*0.4,
+          vx: Math.cos(angle)*speed*0.5,
+          vy: 1 + Math.random()*3,
+          size: 6 + Math.random()*10,
+          rot: Math.random()*Math.PI*2,
+          vr : (Math.random()*0.2 - 0.1),
+          color: COLORS[Math.floor(Math.random()*COLORS.length)],
+          tilt: Math.random()*0.8 + 0.2,
+        };
+      });
+
+      function draw(t) {
+        if (!startT) startT = t;
+        const elapsed = t - startT;
+        ctx.clearRect(0,0,w,h);
+
+        // フェード
+        let alpha = 1;
+        if (elapsed > DURATION) {
+          alpha = 1 - Math.min(1, (elapsed - DURATION)/FADE_OUT);
+          if (alpha <= 0) {
+            cancelAnimationFrame(rafId);
+            canvas.remove(); // 後始末
+            return;
+          }
+        }
+        ctx.globalAlpha = alpha;
+
+        for (const p of parts) {
+          p.x += p.vx;
+          p.y += p.vy;
+          p.rot += p.vr;
+          // 重力&左右揺らぎ
+          p.vy += 0.01;
+          p.vx += Math.sin(p.y*0.005)*0.02;
+
+          // 画面外に出たら上に戻す
+          if (p.y > h + 20) {
+            p.y = -20;
+            p.x = Math.random()*w;
+            p.vy = 1 + Math.random()*3;
+          }
+
+          // 紙片描画（傾き・回転つきの長方形）
+          ctx.save();
+          ctx.translate(p.x, p.y);
+          ctx.rotate(p.rot);
+          ctx.fillStyle = p.color;
+          ctx.fillRect(-p.size/2, -p.size*p.tilt/2, p.size, p.size*p.tilt);
+          ctx.restore();
+        }
+
+        ctx.globalAlpha = 1;
+        rafId = requestAnimationFrame(draw);
+      }
+
+      rafId = requestAnimationFrame(draw);
+    })();
+</script>
+</body>
+</html>

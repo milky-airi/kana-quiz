@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Select the Level - かなQuiz</title>
+    <link rel="stylesheet" href="/app.css"><!-- 共通テーマ -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="icon" type="image/png" href="/kanaquiz_logo.png">
+    <style>
+        .container{max-width:720px;margin:0 auto;text-align:center}
+        .topbar{display:flex;align-items:center;justify-content:flex-start;margin-bottom:12px}
+        .homebtn{padding:10px 12px;border:1px solid var(--border);border-radius:10px;background:#fff;cursor:pointer;text-decoration:none}
+        h2{margin:8px 0 16px}
+        .levels{display:grid;grid-template-columns:1fr;gap:14px;justify-items:center}
+        @media (min-width:520px){ .levels{grid-template-columns:1fr 1fr} }
+
+        /* レベルボタンの見た目 */
+        .levelbtn{
+          width:100%;
+          max-width:300px;
+          padding:16px 18px;
+          border-radius:12px;
+          border:1px solid var(--border);
+          background:#ffca92;               /* 指定色 */
+          color:var(--fg);
+          text-decoration:none;
+          font-size:18px;
+          font-weight:700;
+          font-size:20px;
+          transition:transform .06s ease, filter .12s ease;
+          display:inline-flex; align-items:center; justify-content:center;
+        }
+        .levelbtn:hover{ filter:brightness(0.95); } /* 少し暗く */
+        .levelbtn:active{ transform:translateY(1px); }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- 左上にホームボタン（戻るボタンは削除） -->
+    <div class="topbar">
+        <a href="/" class="homebtn" aria-label="home"><i class="fa-solid fa-house"></i></a>
+    </div>
+
+    <h2>レベルを選択</h2>
+
+    <div id="buttons" class="levels"></div>
+</div>
+
+<script>
+    const type = new URLSearchParams(location.search).get('type') || 'rome2hira';
+
+    // 4カテゴリ（清音 / 濁音・半濁音 / 拗音 / 単語）
+    const LEVELS = [
+      {key:'SEION',  label:'Level 1：あ〜ん'},
+      {key:'DAKUON', label:'Level 2：が〜ぽ'},
+      {key:'YOUON',  label:'Level 3：きゃ〜ぴょ'},
+      {key:'TANGO',  label:'Level 4：Words'}
+    ];
+
+    const box = document.getElementById('buttons');
+    LEVELS.forEach(({key,label})=>{
+      const a = document.createElement('a');
+      a.href = `/quiz?type=${encodeURIComponent(type)}&level=${encodeURIComponent(key)}`;
+      a.className = 'levelbtn';
+      a.textContent = label;
+      box.appendChild(a);
+    });
+</script>
+</body>
+</html>

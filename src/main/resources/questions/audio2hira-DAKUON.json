@@ -1,0 +1,31 @@
+{
+  "type": "audio2hira",
+  "level": "DAKUON",
+  "questions": [
+    { "prompt": "が", "answer": "が" },
+    { "prompt": "ぎ", "answer": "ぎ" },
+    { "prompt": "ぐ", "answer": "ぐ" },
+    { "prompt": "げ", "answer": "げ" },
+    { "prompt": "ご", "answer": "ご" },
+    { "prompt": "ざ", "answer": "ざ" },
+    { "prompt": "じ", "answer": "じ" },
+    { "prompt": "ず", "answer": "ず" },
+    { "prompt": "ぜ", "answer": "ぜ" },
+    { "prompt": "ぞ", "answer": "ぞ" },
+    { "prompt": "だ", "answer": "だ" },
+    { "prompt": "ぢ", "answer": "ぢ" },
+    { "prompt": "づ", "answer": "づ" },
+    { "prompt": "で", "answer": "で" },
+    { "prompt": "ど", "answer": "ど" },
+    { "prompt": "ば", "answer": "ば" },
+    { "prompt": "び", "answer": "び" },
+    { "prompt": "ぶ", "answer": "ぶ" },
+    { "prompt": "べ", "answer": "べ" },
+    { "prompt": "ぼ", "answer": "ぼ" },
+    { "prompt": "ぱ", "answer": "ぱ" },
+    { "prompt": "ぴ", "answer": "ぴ" },
+    { "prompt": "ぷ", "answer": "ぷ" },
+    { "prompt": "ぺ", "answer": "ぺ" },
+    { "prompt": "ぽ", "answer": "ぽ" }
+  ]
+}

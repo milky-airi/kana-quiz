@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Questions - かなQuiz</title>
+    <!-- Google Fonts / Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="icon" type="image/png" href="/kanaquiz_logo.png">
+    <style>
+        body {
+          font-family: "Shorai Sans","Nunito Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+          margin: 24px;
+          background-color: #fef3df;
+          color: #7d4700;
+        }
+        .wrap { max-width: 720px; margin: 0 auto; }
+        .top { display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; gap:12px; }
+        .left { display:flex; align-items:center; gap:8px; }
+        .backbtn { padding:10px 12px; border:1px solid #ddd; border-radius:10px; background:#fff; cursor:pointer; }
+        .prompt { display:flex; align-items:center; justify-content:center; height:140px; margin:24px 0; }
+        .promptText { font-size:72px; }
+        .grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+        button { padding:16px; font-size:24px; border-radius:12px; border:1px solid #ddd; cursor:pointer; background:#fff; color:#7d4700; }
+        button.correct { background:#e6ffed; border-color:#34c759; }
+        button.wrong { background:#ffecec; border-color:#ff3b30; }
+        .progress { height:8px; background:#eee; border-radius:999px; overflow:hidden; margin-top:8px; }
+        .bar { height:100%; width:0; background:#ff7a00; }
+        .playbtn {
+          width:120px; height:120px; border-radius:60px; border:1px solid #ddd;
+          font-size:48px; display:none; align-items:center; justify-content:center;
+          box-shadow:0 6px 18px rgba(0,0,0,.08); background:#fff; color:#7d4700;
+        }
+        /* Modal */
+        .overlay { position:fixed; inset:0; background:rgba(0,0,0,.35); display:none; align-items:center; justify-content:center; z-index:50; }
+        .dialog { background:#fff; border-radius:16px; max-width:420px; width:92%; padding:20px; box-shadow:0 20px 40px rgba(0,0,0,.2); color:#7d4700; }
+        .dialog h3 { margin:0 0 8px; font-size:20px; }
+        .actions { display:flex; gap:10px; justify-content:flex-end; }
+
+        /* ✅ / ❌ ステータス */
+        .score-status { font-size:20px; font-weight:700; }
+        .score-status .ok { color:green; margin-right:8px; }
+        .score-status .ng { color:#ff3b30; }
+
+        /* ★ 単語の意味表示 */
+        .meaning {
+          display:none;
+          margin-top:14px;
+          padding:12px 14px;
+          border:1px dashed #e6a96a;
+          border-radius:12px;
+          background:#fff7ea;
+          font-size:22px;
+          line-height:1.5;
+        }
+        .meaning b { margin-right:6px; }
+
+        .btn{ padding:10px 14px; border-radius:10px; border:1px solid #ddd; background:#fff; cursor:pointer; color:#7d4700; }
+        .btn.primary{ background:#ff7a00; color:#fff; border-color:#ff7a00; } /* ← オレンジ */
+        .btn.primary:hover{ filter:brightness(0.95); }
+    </style>
+</head>
+
+<body>
+<div class="wrap">
+    <div class="top">
+        <div class="left">
+            <button id="back" class="backbtn" aria-label="back">
+                <i class="fa-solid fa-arrow-left"></i> Back
+            </button>
+        </div>
+        <div>
+            <span id="now">1</span> / <span id="total">10</span>
+            <div class="progress"><div id="bar" class="bar"></div></div>
+        </div>
+        <div id="score-status" class="score-status" aria-label="score">✅0 / ❌0</div>
+    </div>
+
+    <!-- 問題表示領域：text or play button を出し分け -->
+    <div id="prompt" class="prompt">
+        <div id="promptText" class="promptText">A</div>
+        <button id="play" class="playbtn" aria-label="play audio" title="再生">🔊</button>
+    </div>
+
+    <div id="choices" class="grid"></div>
+
+    <!-- ★ 意味表示（TANGOのみ回答後に表示） -->
+    <div id="meaning" class="meaning" aria-live="polite"></div>
+
+    <div style="text-align:center;margin-top:20px">
+        <button id="next" style="display:none"><i class="fa-solid fa-forward"></i> Next</button>
+    </div>
+</div>
+
+<!-- 確認モーダル -->
+<div id="modal" class="overlay" role="dialog" aria-modal="true" aria-labelledby="dlgTitle">
+    <div class="dialog">
+        <h3 id="dlgTitle">Interrupt the quiz?</h3>
+        <div class="actions">
+            <button id="cancelExit" class="btn" aria-label="cancel">Cancel</button>
+            <button id="confirmExit" class="btn primary" aria-label="ok">OK</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    let q=[], i=0, score=0, locked=false;
+    let cur = null;
+    let correctCount = 0;
+    let wrongCount = 0;
+
+    // クエリ
+    const params = new URLSearchParams(location.search);
+    const type  = params.get('type')  || 'rome2hira';
+    const level = params.get('level') || 'SEION';
+    const isAudio = (type === 'audio2hira');
+
+    // DOM
+    const promptTextEl = document.getElementById('promptText');
+    const playBtn = document.getElementById('play');
+    const totalEl = document.getElementById('total');
+    const nowEl = document.getElementById('now');
+    const barEl = document.getElementById('bar');
+    const choicesEl = document.getElementById('choices');
+    const nextEl = document.getElementById('next');
+    const scoreStatusEl = document.getElementById('score-status');
+    const meaningEl = document.getElementById('meaning'); // ★
+
+    // 戻る＆モーダル
+    const backBtn = document.getElementById('back');
+    const modal = document.getElementById('modal');
+    const cancelExit = document.getElementById('cancelExit');
+    const confirmExit = document.getElementById('confirmExit');
+
+    backBtn.onclick = () => { modal.style.display = 'flex'; };
+    cancelExit.onclick = () => { modal.style.display = 'none'; };
+    modal.addEventListener('click', (e) => { if (e.target === modal) modal.style.display = 'none'; });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') modal.style.display = 'none'; });
+    confirmExit.onclick = () => {
+      window.location.href = `/levels?type=${encodeURIComponent(type)}`;
+    };
+
+    // 音声プレイヤ
+    const audioEl = new Audio();
+
+    function updateScoreStatus(){
+      scoreStatusEl.innerHTML =
+        `<span class="ok">✅${correctCount}</span> / <span class="ng">❌${wrongCount}</span>`;
+    }
+
+    async function load() {
+      try {
+        const url = `/api/levels/${encodeURIComponent(level)}/questions?type=${encodeURIComponent(type)}&count=10`;
+        const res = await fetch(url);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        q = await res.json();
+
+        if (!Array.isArray(q) || q.length === 0) {
+          promptTextEl.textContent = '問題が見つかりません';
+          choicesEl.innerHTML = '<div>データを追加してください</div>';
+          totalEl.textContent = '0';
+          playBtn.style.display = 'none';
+          return;
+        }
+
+        totalEl.textContent = q.length;
+        updateScoreStatus();
+        show();
+      } catch (e) {
+        console.error(e);
+        promptTextEl.textContent = '読み込みエラー';
+        choicesEl.innerHTML = '<div>時間をおいて再度お試しください</div>';
+        playBtn.style.display = 'none';
+      }
+    }
+
+    function show() {
+      if (!q.length || i >= q.length) return;
+      locked = false;
+
+      cur = q[i];
+      nowEl.textContent = (i + 1);
+      nextEl.style.display = 'none';
+      barEl.style.width = ((i) / q.length * 100) + '%';
+
+      // ★ 毎問はじめに意味を隠す＆内容クリア
+      meaningEl.style.display = 'none';
+      meaningEl.textContent = '';
+
+      if (isAudio) {
+        promptTextEl.style.display = 'none';
+        playBtn.style.display = 'flex';
+        const src = cur.audio || `/audio/audio2hira/${encodeURIComponent(level)}/${encodeURIComponent(cur.prompt)}.m4a`;
+        audioEl.src = src;
+        audioEl.play().catch(()=>{});
+        playBtn.onclick = () => { audioEl.currentTime = 0; audioEl.play().catch(()=>{}); };
+      } else {
+        promptTextEl.textContent = cur.prompt ?? '';
+        promptTextEl.style.display = 'block';
+        playBtn.style.display = 'none';
+      }
+
+      choicesEl.innerHTML = '';
+      (cur.choices || []).forEach(ch => {
+        const btn = document.createElement('button');
+        btn.textContent = ch;
+        btn.onclick = () => select(btn, ch === cur.answer);
+        choicesEl.appendChild(btn);
+      });
+    }
+
+    function select(btn, ok) {
+      if (locked) return;
+      locked = true;
+
+      const buttons = [...document.querySelectorAll('#choices button')];
+      buttons.forEach(b => b.disabled = true);
+
+      if (ok) {
+        btn.classList.add('correct');
+        correctCount++;
+        score = correctCount;
+      } else {
+        btn.classList.add('wrong');
+        wrongCount++;
+        const correctBtn = buttons.find(b => b.textContent === cur.answer);
+        if (correctBtn) correctBtn.classList.add('correct');
+      }
+
+      updateScoreStatus();
+
+      // ★ 単語（TANGO）なら意味を表示（JSONに meaning がある前提）
+      if (level === 'TANGO' && cur.meaning) {
+        meaningEl.innerHTML = `<b><i class="fa-solid fa-book-open"></i> Meaning:</b> ${cur.meaning}`;
+        meaningEl.style.display = 'block';
+      }
+
+      nextEl.style.display = 'inline-block';
+    }
+
+    nextEl.onclick = () => {
+      i++;
+      if (i >= q.length) {
+        window.location.href =
+          `/result?score=${score}&total=${q.length}&type=${encodeURIComponent(type)}&level=${encodeURIComponent(level)}`;
+      } else {
+        show();
+      }
+    };
+
+    load();
+</script>
+</body>
+</html>

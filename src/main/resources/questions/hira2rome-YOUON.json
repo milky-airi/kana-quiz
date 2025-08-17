@@ -1,0 +1,49 @@
+{
+  "type": "hira2rome",
+  "level": "YOUON",
+  "questions": [
+    { "prompt": "きゃ", "answer": "kya" },
+    { "prompt": "きゅ", "answer": "kyu" },
+    { "prompt": "きょ", "answer": "kyo" },
+
+    { "prompt": "しゃ", "answer": "sha" },
+    { "prompt": "しゅ", "answer": "shu" },
+    { "prompt": "しょ", "answer": "sho" },
+
+    { "prompt": "ちゃ", "answer": "cha" },
+    { "prompt": "ちゅ", "answer": "chu" },
+    { "prompt": "ちょ", "answer": "cho" },
+
+    { "prompt": "にゃ", "answer": "nya" },
+    { "prompt": "にゅ", "answer": "nyu" },
+    { "prompt": "にょ", "answer": "nyo" },
+
+    { "prompt": "ひゃ", "answer": "hya" },
+    { "prompt": "ひゅ", "answer": "hyu" },
+    { "prompt": "ひょ", "answer": "hyo" },
+
+    { "prompt": "みゃ", "answer": "mya" },
+    { "prompt": "みゅ", "answer": "myu" },
+    { "prompt": "みょ", "answer": "myo" },
+
+    { "prompt": "りゃ", "answer": "rya" },
+    { "prompt": "りゅ", "answer": "ryu" },
+    { "prompt": "りょ", "answer": "ryo" },
+
+    { "prompt": "ぎゃ", "answer": "gya" },
+    { "prompt": "ぎゅ", "answer": "gyu" },
+    { "prompt": "ぎょ", "answer": "gyo" },
+
+    { "prompt": "じゃ", "answer": "ja" },
+    { "prompt": "じゅ", "answer": "ju" },
+    { "prompt": "じょ", "answer": "jo" },
+
+    { "prompt": "びゃ", "answer": "bya" },
+    { "prompt": "びゅ", "answer": "byu" },
+    { "prompt": "びょ", "answer": "byo" },
+
+    { "prompt": "ぴゃ", "answer": "pya" },
+    { "prompt": "ぴゅ", "answer": "pyu" },
+    { "prompt": "ぴょ", "answer": "pyo" }
+  ]
+}
