@@ -9,5 +9,5 @@ FROM eclipse-temurin:21-jre
 WORKDIR /app
 ENV SPRING_PROFILES_ACTIVE=prod
 EXPOSE 8080
-COPY --from=build /app/target/kana-quiz-0.0.1-SNAPSHOT.jar /app/app.jar
-CMD ["sh","-c","java -Dserver.port=$PORT -Dspring.profiles.active=${SPRING_PROFILES_ACTIVE:-prod} -jar /app/app.jar"]
+COPY --from=build /app/target/kana-quiz-*.jar /app/app.jar
+CMD ["java","-Dserver.port=${PORT}","-Dspring.profiles.active=${SPRING_PROFILES_ACTIVE:-prod}","-jar","/app/app.jar"]
